@@ -1,0 +1,29 @@
+language: python
+dist: bionic
+cache: pip
+
+before_install:
+- echo -e "machine github.com\n  login $GITHUB_TOKEN" > ~/.netrc
+- git lfs pull
+
+install:
+ - pip3 install pylint bandit mccabe
+ - pip3 install -r requirements.txt
+
+before_script:
+ - find . -name "*.py" -exec python3 -m py_compile '{}' \;
+ - find . -name "*.py" -exec pylint '{}' + || if [ $? -eq 1 ]; then echo "you fail"; fi
+ - find . -name "*.py" -exec python3 -m mccabe --min 3 '{}' + || if [ $? -eq 1 ]; then echo "you fail"; fi
+ - bandit -r .
+
+script:
+ - python3 chart_create.py
+
+before_deploy:
+ - zip charts.zip *.png
+
+deploy:
+  provider: releases
+  api_key: $GITHUB_TOKEN
+  file: charts.zip
+  skip_cleanup: true

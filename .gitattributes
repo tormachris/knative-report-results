@@ -1,0 +1,2 @@
+results.csv filter=lfs diff=lfs merge=lfs -text
+knative-for-negyedik/log.txt filter=lfs diff=lfs merge=lfs -text
