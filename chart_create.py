@@ -27,6 +27,7 @@ class CsvAnalyzer(abc.ABC):
     """
     Abstract CSV analyzer
     """
+
     def __init__(self):
         """
         Init object
@@ -42,7 +43,10 @@ class CsvAnalyzer(abc.ABC):
         """
         return[(directory + '/' + filename) for filename in os.listdir(directory) if filename.endswith('.csv')]
 
-    def walkresponsepersec(self, responsepersec: dict, shouldprint: bool) -> None:
+    def walkresponsepersec(
+            self,
+            responsepersec: dict,
+            shouldprint: bool) -> None:
         """
         Walks through reponsepersec dict
         :param responsepersec:
@@ -62,6 +66,7 @@ class HeyAnalyzer(CsvAnalyzer):
     """
     Analyze hey benchmark output.
     """
+
     def processfile(
             self,
             fname,
@@ -111,6 +116,7 @@ class LogAnalyzer:
     """
     Analyze Knative logs
     """
+
     def __init__(self):
         """
         Init object
@@ -223,6 +229,7 @@ class JmeterAnalyzer(CsvAnalyzer):
     """
     Jmeter benchmark tool analyzer
     """
+
     def processfile(
             self,
             fname,
@@ -264,6 +271,7 @@ class ChartCreator:
     """
     Create charts automagically
     """
+
     def savecsvplot(self, csvfile: CsvAnalyzer, directory) -> None:
         """
         Save plot of csv file
