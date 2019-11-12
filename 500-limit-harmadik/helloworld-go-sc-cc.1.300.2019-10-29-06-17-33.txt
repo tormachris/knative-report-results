@@ -1,0 +1,132 @@
+headers: object, {"host":" helloworld-go-sc-cc.default.example.com","user-agent":"loadtest/3.0.8","accept":"*/*"}
+[Tue Oct 29 2019 06:17:34 GMT-0600 (MDT)] INFO Requests: 0, requests per second: 0, mean latency: 0 ms
+[Tue Oct 29 2019 06:17:39 GMT-0600 (MDT)] INFO Requests: 2187, requests per second: 438, mean latency: 4.8 ms
+[Tue Oct 29 2019 06:17:44 GMT-0600 (MDT)] INFO Requests: 4688, requests per second: 500, mean latency: 2.9 ms
+[Tue Oct 29 2019 06:17:49 GMT-0600 (MDT)] INFO Requests: 7187, requests per second: 500, mean latency: 2.7 ms
+[Tue Oct 29 2019 06:17:54 GMT-0600 (MDT)] INFO Requests: 9688, requests per second: 500, mean latency: 2.7 ms
+[Tue Oct 29 2019 06:17:59 GMT-0600 (MDT)] INFO Requests: 12188, requests per second: 500, mean latency: 2.7 ms
+[Tue Oct 29 2019 06:18:04 GMT-0600 (MDT)] INFO Requests: 14686, requests per second: 499, mean latency: 3.6 ms
+[Tue Oct 29 2019 06:18:09 GMT-0600 (MDT)] INFO Requests: 17185, requests per second: 500, mean latency: 6.5 ms
+[Tue Oct 29 2019 06:18:14 GMT-0600 (MDT)] INFO Requests: 19688, requests per second: 500, mean latency: 6.5 ms
+[Tue Oct 29 2019 06:18:19 GMT-0600 (MDT)] INFO Requests: 22184, requests per second: 499, mean latency: 6.4 ms
+[Tue Oct 29 2019 06:18:24 GMT-0600 (MDT)] INFO Requests: 24686, requests per second: 500, mean latency: 6.5 ms
+[Tue Oct 29 2019 06:18:29 GMT-0600 (MDT)] INFO Requests: 27183, requests per second: 500, mean latency: 6.5 ms
+[Tue Oct 29 2019 06:18:34 GMT-0600 (MDT)] INFO Requests: 29600, requests per second: 483, mean latency: 4 ms
+[Tue Oct 29 2019 06:18:34 GMT-0600 (MDT)] INFO Errors: 1369, accumulated errors: 1369, 4.6% of total requests
+[Tue Oct 29 2019 06:18:39 GMT-0600 (MDT)] INFO Requests: 32188, requests per second: 518, mean latency: 5.1 ms
+[Tue Oct 29 2019 06:18:39 GMT-0600 (MDT)] INFO Errors: 1372, accumulated errors: 2741, 8.5% of total requests
+[Tue Oct 29 2019 06:18:44 GMT-0600 (MDT)] INFO Requests: 34687, requests per second: 500, mean latency: 2.7 ms
+[Tue Oct 29 2019 06:18:44 GMT-0600 (MDT)] INFO Errors: 50, accumulated errors: 2791, 8% of total requests
+[Tue Oct 29 2019 06:18:49 GMT-0600 (MDT)] INFO Requests: 37187, requests per second: 500, mean latency: 2.7 ms
+[Tue Oct 29 2019 06:18:49 GMT-0600 (MDT)] INFO Errors: 2, accumulated errors: 2793, 7.5% of total requests
+[Tue Oct 29 2019 06:18:54 GMT-0600 (MDT)] INFO Requests: 39687, requests per second: 500, mean latency: 2.7 ms
+[Tue Oct 29 2019 06:18:54 GMT-0600 (MDT)] INFO Errors: 2, accumulated errors: 2795, 7% of total requests
+[Tue Oct 29 2019 06:18:59 GMT-0600 (MDT)] INFO Requests: 42188, requests per second: 500, mean latency: 2.7 ms
+[Tue Oct 29 2019 06:18:59 GMT-0600 (MDT)] INFO Errors: 0, accumulated errors: 2795, 6.6% of total requests
+[Tue Oct 29 2019 06:19:04 GMT-0600 (MDT)] INFO Requests: 44688, requests per second: 500, mean latency: 2.7 ms
+[Tue Oct 29 2019 06:19:04 GMT-0600 (MDT)] INFO Errors: 0, accumulated errors: 2795, 6.3% of total requests
+[Tue Oct 29 2019 06:19:09 GMT-0600 (MDT)] INFO Requests: 47186, requests per second: 500, mean latency: 5.8 ms
+[Tue Oct 29 2019 06:19:09 GMT-0600 (MDT)] INFO Errors: 1, accumulated errors: 2796, 5.9% of total requests
+[Tue Oct 29 2019 06:19:14 GMT-0600 (MDT)] INFO Requests: 49684, requests per second: 500, mean latency: 6.5 ms
+[Tue Oct 29 2019 06:19:14 GMT-0600 (MDT)] INFO Errors: 0, accumulated errors: 2796, 5.6% of total requests
+[Tue Oct 29 2019 06:19:19 GMT-0600 (MDT)] INFO Requests: 52186, requests per second: 500, mean latency: 6.5 ms
+[Tue Oct 29 2019 06:19:19 GMT-0600 (MDT)] INFO Errors: 2, accumulated errors: 2798, 5.4% of total requests
+[Tue Oct 29 2019 06:19:24 GMT-0600 (MDT)] INFO Requests: 54686, requests per second: 500, mean latency: 6.5 ms
+[Tue Oct 29 2019 06:19:24 GMT-0600 (MDT)] INFO Errors: 0, accumulated errors: 2798, 5.1% of total requests
+[Tue Oct 29 2019 06:19:29 GMT-0600 (MDT)] INFO Requests: 57187, requests per second: 500, mean latency: 6.6 ms
+[Tue Oct 29 2019 06:19:29 GMT-0600 (MDT)] INFO Errors: 0, accumulated errors: 2798, 4.9% of total requests
+[Tue Oct 29 2019 06:19:34 GMT-0600 (MDT)] INFO Requests: 59671, requests per second: 497, mean latency: 5.8 ms
+[Tue Oct 29 2019 06:19:34 GMT-0600 (MDT)] INFO Errors: 412, accumulated errors: 3210, 5.4% of total requests
+[Tue Oct 29 2019 06:19:39 GMT-0600 (MDT)] INFO Requests: 62153, requests per second: 496, mean latency: 2.5 ms
+[Tue Oct 29 2019 06:19:39 GMT-0600 (MDT)] INFO Errors: 1928, accumulated errors: 5138, 8.3% of total requests
+[Tue Oct 29 2019 06:19:44 GMT-0600 (MDT)] INFO Requests: 64688, requests per second: 507, mean latency: 3 ms
+[Tue Oct 29 2019 06:19:44 GMT-0600 (MDT)] INFO Errors: 420, accumulated errors: 5558, 8.6% of total requests
+[Tue Oct 29 2019 06:19:49 GMT-0600 (MDT)] INFO Requests: 67188, requests per second: 500, mean latency: 2.6 ms
+[Tue Oct 29 2019 06:19:49 GMT-0600 (MDT)] INFO Errors: 21, accumulated errors: 5579, 8.3% of total requests
+[Tue Oct 29 2019 06:19:54 GMT-0600 (MDT)] INFO Requests: 69687, requests per second: 500, mean latency: 2.7 ms
+[Tue Oct 29 2019 06:19:54 GMT-0600 (MDT)] INFO Errors: 6, accumulated errors: 5585, 8% of total requests
+[Tue Oct 29 2019 06:19:59 GMT-0600 (MDT)] INFO Requests: 72188, requests per second: 500, mean latency: 2.7 ms
+[Tue Oct 29 2019 06:19:59 GMT-0600 (MDT)] INFO Errors: 2, accumulated errors: 5587, 7.7% of total requests
+[Tue Oct 29 2019 06:20:04 GMT-0600 (MDT)] INFO Requests: 74688, requests per second: 500, mean latency: 2.7 ms
+[Tue Oct 29 2019 06:20:04 GMT-0600 (MDT)] INFO Errors: 1, accumulated errors: 5588, 7.5% of total requests
+[Tue Oct 29 2019 06:20:09 GMT-0600 (MDT)] INFO Requests: 77184, requests per second: 499, mean latency: 4.3 ms
+[Tue Oct 29 2019 06:20:09 GMT-0600 (MDT)] INFO Errors: 1, accumulated errors: 5589, 7.2% of total requests
+[Tue Oct 29 2019 06:20:14 GMT-0600 (MDT)] INFO Requests: 79684, requests per second: 500, mean latency: 6.5 ms
+[Tue Oct 29 2019 06:20:14 GMT-0600 (MDT)] INFO Errors: 1, accumulated errors: 5590, 7% of total requests
+[Tue Oct 29 2019 06:20:19 GMT-0600 (MDT)] INFO Requests: 82184, requests per second: 500, mean latency: 6.6 ms
+[Tue Oct 29 2019 06:20:19 GMT-0600 (MDT)] INFO Errors: 0, accumulated errors: 5590, 6.8% of total requests
+[Tue Oct 29 2019 06:20:24 GMT-0600 (MDT)] INFO Requests: 84684, requests per second: 500, mean latency: 6.5 ms
+[Tue Oct 29 2019 06:20:24 GMT-0600 (MDT)] INFO Errors: 1, accumulated errors: 5591, 6.6% of total requests
+[Tue Oct 29 2019 06:20:29 GMT-0600 (MDT)] INFO Requests: 87184, requests per second: 500, mean latency: 6.5 ms
+[Tue Oct 29 2019 06:20:29 GMT-0600 (MDT)] INFO Errors: 3, accumulated errors: 5594, 6.4% of total requests
+[Tue Oct 29 2019 06:20:34 GMT-0600 (MDT)] INFO Requests: 89686, requests per second: 500, mean latency: 6.6 ms
+[Tue Oct 29 2019 06:20:34 GMT-0600 (MDT)] INFO Errors: 0, accumulated errors: 5594, 6.2% of total requests
+[Tue Oct 29 2019 06:20:39 GMT-0600 (MDT)] INFO Requests: 92187, requests per second: 501, mean latency: 4 ms
+[Tue Oct 29 2019 06:20:39 GMT-0600 (MDT)] INFO Errors: 1625, accumulated errors: 7219, 7.8% of total requests
+[Tue Oct 29 2019 06:20:44 GMT-0600 (MDT)] INFO Requests: 94688, requests per second: 500, mean latency: 3.1 ms
+[Tue Oct 29 2019 06:20:44 GMT-0600 (MDT)] INFO Errors: 794, accumulated errors: 8013, 8.5% of total requests
+[Tue Oct 29 2019 06:20:49 GMT-0600 (MDT)] INFO Requests: 97188, requests per second: 500, mean latency: 3.9 ms
+[Tue Oct 29 2019 06:20:49 GMT-0600 (MDT)] INFO Errors: 343, accumulated errors: 8356, 8.6% of total requests
+[Tue Oct 29 2019 06:20:54 GMT-0600 (MDT)] INFO Requests: 99688, requests per second: 500, mean latency: 2.7 ms
+[Tue Oct 29 2019 06:20:54 GMT-0600 (MDT)] INFO Errors: 15, accumulated errors: 8371, 8.4% of total requests
+[Tue Oct 29 2019 06:20:59 GMT-0600 (MDT)] INFO Requests: 102188, requests per second: 500, mean latency: 2.7 ms
+[Tue Oct 29 2019 06:20:59 GMT-0600 (MDT)] INFO Errors: 6, accumulated errors: 8377, 8.2% of total requests
+[Tue Oct 29 2019 06:21:04 GMT-0600 (MDT)] INFO Requests: 104688, requests per second: 500, mean latency: 2.7 ms
+[Tue Oct 29 2019 06:21:04 GMT-0600 (MDT)] INFO Errors: 3, accumulated errors: 8380, 8% of total requests
+[Tue Oct 29 2019 06:21:09 GMT-0600 (MDT)] INFO Requests: 107188, requests per second: 500, mean latency: 2.7 ms
+[Tue Oct 29 2019 06:21:09 GMT-0600 (MDT)] INFO Errors: 1, accumulated errors: 8381, 7.8% of total requests
+[Tue Oct 29 2019 06:21:14 GMT-0600 (MDT)] INFO Requests: 109686, requests per second: 500, mean latency: 6.5 ms
+[Tue Oct 29 2019 06:21:14 GMT-0600 (MDT)] INFO Errors: 3, accumulated errors: 8384, 7.6% of total requests
+[Tue Oct 29 2019 06:21:19 GMT-0600 (MDT)] INFO Requests: 112185, requests per second: 500, mean latency: 6.5 ms
+[Tue Oct 29 2019 06:21:19 GMT-0600 (MDT)] INFO Errors: 3, accumulated errors: 8387, 7.5% of total requests
+[Tue Oct 29 2019 06:21:24 GMT-0600 (MDT)] INFO Requests: 114686, requests per second: 500, mean latency: 6.5 ms
+[Tue Oct 29 2019 06:21:24 GMT-0600 (MDT)] INFO Errors: 0, accumulated errors: 8387, 7.3% of total requests
+[Tue Oct 29 2019 06:21:29 GMT-0600 (MDT)] INFO Requests: 117185, requests per second: 500, mean latency: 6.6 ms
+[Tue Oct 29 2019 06:21:29 GMT-0600 (MDT)] INFO Errors: 0, accumulated errors: 8387, 7.2% of total requests
+[Tue Oct 29 2019 06:21:34 GMT-0600 (MDT)] INFO Requests: 119687, requests per second: 500, mean latency: 6.6 ms
+[Tue Oct 29 2019 06:21:34 GMT-0600 (MDT)] INFO Errors: 2, accumulated errors: 8389, 7% of total requests
+[Tue Oct 29 2019 06:21:39 GMT-0600 (MDT)] INFO Requests: 122154, requests per second: 493, mean latency: 5 ms
+[Tue Oct 29 2019 06:21:39 GMT-0600 (MDT)] INFO Errors: 841, accumulated errors: 9230, 7.6% of total requests
+[Tue Oct 29 2019 06:21:44 GMT-0600 (MDT)] INFO Requests: 124668, requests per second: 503, mean latency: 5.7 ms
+[Tue Oct 29 2019 06:21:44 GMT-0600 (MDT)] INFO Errors: 1216, accumulated errors: 10446, 8.4% of total requests
+[Tue Oct 29 2019 06:21:49 GMT-0600 (MDT)] INFO Requests: 127187, requests per second: 504, mean latency: 5.1 ms
+[Tue Oct 29 2019 06:21:49 GMT-0600 (MDT)] INFO Errors: 612, accumulated errors: 11058, 8.7% of total requests
+[Tue Oct 29 2019 06:21:54 GMT-0600 (MDT)] INFO Requests: 129688, requests per second: 500, mean latency: 2.8 ms
+[Tue Oct 29 2019 06:21:54 GMT-0600 (MDT)] INFO Errors: 81, accumulated errors: 11139, 8.6% of total requests
+[Tue Oct 29 2019 06:21:59 GMT-0600 (MDT)] INFO Requests: 132187, requests per second: 500, mean latency: 2.7 ms
+[Tue Oct 29 2019 06:21:59 GMT-0600 (MDT)] INFO Errors: 24, accumulated errors: 11163, 8.4% of total requests
+[Tue Oct 29 2019 06:22:04 GMT-0600 (MDT)] INFO Requests: 134687, requests per second: 500, mean latency: 2.7 ms
+[Tue Oct 29 2019 06:22:04 GMT-0600 (MDT)] INFO Errors: 5, accumulated errors: 11168, 8.3% of total requests
+[Tue Oct 29 2019 06:22:09 GMT-0600 (MDT)] INFO Requests: 137187, requests per second: 500, mean latency: 2.7 ms
+[Tue Oct 29 2019 06:22:09 GMT-0600 (MDT)] INFO Errors: 5, accumulated errors: 11173, 8.1% of total requests
+[Tue Oct 29 2019 06:22:14 GMT-0600 (MDT)] INFO Requests: 139685, requests per second: 500, mean latency: 4.9 ms
+[Tue Oct 29 2019 06:22:14 GMT-0600 (MDT)] INFO Errors: 4, accumulated errors: 11177, 8% of total requests
+[Tue Oct 29 2019 06:22:19 GMT-0600 (MDT)] INFO Requests: 142186, requests per second: 500, mean latency: 6.5 ms
+[Tue Oct 29 2019 06:22:19 GMT-0600 (MDT)] INFO Errors: 4, accumulated errors: 11181, 7.9% of total requests
+[Tue Oct 29 2019 06:22:24 GMT-0600 (MDT)] INFO Requests: 144685, requests per second: 500, mean latency: 6.5 ms
+[Tue Oct 29 2019 06:22:24 GMT-0600 (MDT)] INFO Errors: 1, accumulated errors: 11182, 7.7% of total requests
+[Tue Oct 29 2019 06:22:29 GMT-0600 (MDT)] INFO Requests: 147184, requests per second: 500, mean latency: 6.5 ms
+[Tue Oct 29 2019 06:22:29 GMT-0600 (MDT)] INFO Errors: 1, accumulated errors: 11183, 7.6% of total requests
+[Tue Oct 29 2019 06:22:34 GMT-0600 (MDT)] INFO 
+[Tue Oct 29 2019 06:22:34 GMT-0600 (MDT)] INFO Target URL:          http://10.98.22.60/
+[Tue Oct 29 2019 06:22:34 GMT-0600 (MDT)] INFO Max time (s):        300
+[Tue Oct 29 2019 06:22:34 GMT-0600 (MDT)] INFO Concurrency level:   1
+[Tue Oct 29 2019 06:22:34 GMT-0600 (MDT)] INFO Agent:               none
+[Tue Oct 29 2019 06:22:34 GMT-0600 (MDT)] INFO Requests per second: 500
+[Tue Oct 29 2019 06:22:34 GMT-0600 (MDT)] INFO 
+[Tue Oct 29 2019 06:22:34 GMT-0600 (MDT)] INFO Completed requests:  149685
+[Tue Oct 29 2019 06:22:34 GMT-0600 (MDT)] INFO Total errors:        11183
+[Tue Oct 29 2019 06:22:34 GMT-0600 (MDT)] INFO Total time:          300.002518905 s
+[Tue Oct 29 2019 06:22:34 GMT-0600 (MDT)] INFO Requests per second: 499
+[Tue Oct 29 2019 06:22:34 GMT-0600 (MDT)] INFO Mean latency:        4.6 ms
+[Tue Oct 29 2019 06:22:34 GMT-0600 (MDT)] INFO 
+[Tue Oct 29 2019 06:22:34 GMT-0600 (MDT)] INFO Percentage of the requests served within a certain time
+[Tue Oct 29 2019 06:22:34 GMT-0600 (MDT)] INFO   50%      3 ms
+[Tue Oct 29 2019 06:22:34 GMT-0600 (MDT)] INFO   90%      7 ms
+[Tue Oct 29 2019 06:22:34 GMT-0600 (MDT)] INFO   95%      8 ms
+[Tue Oct 29 2019 06:22:34 GMT-0600 (MDT)] INFO   99%      9 ms
+[Tue Oct 29 2019 06:22:34 GMT-0600 (MDT)] INFO  100%      119 ms (longest request)
+[Tue Oct 29 2019 06:22:34 GMT-0600 (MDT)] INFO 
+[Tue Oct 29 2019 06:22:34 GMT-0600 (MDT)] INFO  100%      119 ms (longest request)
+[Tue Oct 29 2019 06:22:34 GMT-0600 (MDT)] INFO 
+[Tue Oct 29 2019 06:22:34 GMT-0600 (MDT)] INFO    -1:   11183 errors
