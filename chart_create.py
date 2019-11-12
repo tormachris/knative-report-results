@@ -19,7 +19,16 @@ class CsvAnalyzer(abc.ABC):
         self.latencypersec = []
 
     def getfiles(self, directory='.'):
-        return[(directory + '/' + f) for f in os.listdir(directory) if f.endswith('.csv')]
+        return[(directory + '/' + f) for f in os.listdir(directory) if f.endswith('.csvfile')]
+
+    def walkresponsepersec(self, responsepersec, shouldprint):
+        for sec in responsepersec:
+            if len(responsepersec[sec]) != 0:
+                self.responsespersec.append(len(responsepersec[sec]))
+                self.latencypersec.append(average(responsepersec[sec]))
+                if shouldprint:
+                    print(len(responsepersec[sec]))
+                    print(average(responsepersec[sec]))
 
 
 class HeyAnalyzer(CsvAnalyzer):
@@ -41,13 +50,7 @@ class HeyAnalyzer(CsvAnalyzer):
                     responsepersec[sec] = []
                 else:
                     responsepersec[sec].append(float(item['response-time']))
-            for sec in responsepersec:
-                if len(responsepersec[sec]) != 0:
-                    self.responsespersec.append(len(responsepersec[sec]))
-                    self.latencypersec.append(average(responsepersec[sec]))
-                    if shouldprint:
-                        print(len(responsepersec[sec]))
-                        print(average(responsepersec[sec]))
+            super().walkresponsepersec(responsepersec, shouldprint)
 
     def keychars(self, x):
         return int(x.split('.')[1])
@@ -123,9 +126,9 @@ class LogAnalyzer:
             shouldprint: bool = False) -> None:
         for key, value in dictoftimes.items():
             pod = value['pod']
-            cc = value['cc']
+            concurrency = value['cc']
             avgpod = average(pod)
-            avgcc = average(cc)
+            avgcc = average(concurrency)
             self.podpersec.append(avgpod)
             self.concurrencypersec.append(avgcc)
             if shouldprint:
@@ -139,7 +142,7 @@ class LogAnalyzer:
 
 
 class JmeterAnalyzer(CsvAnalyzer):
-    def processFile(
+    def processfile(
             self,
             fname,
             shouldprint: bool = False):
@@ -157,30 +160,25 @@ class JmeterAnalyzer(CsvAnalyzer):
                 if sec not in responsepersec:
                     responsepersec[sec] = []
                 responsepersec[sec].append(float(item['Latency']))
-            for sec in responsepersec:
-                if len(responsepersec[sec]) != 0:
-                    self.responsespersec.append(len(responsepersec[sec]))
-                    self.latencypersec.append(average(responsepersec[sec]))
-                    if shouldprint:
-                        print(len(responsepersec[sec]))
-                        print(average(responsepersec[sec]))
+
+            super().walkresponsepersec(responsepersec, shouldprint)
 
     def processallfiles(self, directory='.'):
         files = super().getfiles(directory)
         for f in files:
-            self.processFile(f, False)
+            self.processfile(f, False)
 
 
 class ChartCreator:
-    def savecsvPlot(self, csv: CsvAnalyzer, directory) ->None:
+    def savecsvplot(self, csvfile: CsvAnalyzer, directory) -> None:
         print("Charting " + directory)
-        pplot.plot(csv.responsespersec)
+        pplot.plot(csvfile.responsespersec)
         pplot.title(directory)
         pplot.xlabel("Time (seconds)")
         pplot.ylabel("Response/sec")
         pplot.savefig(directory + "-rps.png")
         pplot.clf()
-        pplot.plot(csv.latencypersec)
+        pplot.plot(csvfile.latencypersec)
         pplot.title(directory)
         pplot.xlabel("Time (seconds)")
         pplot.ylabel("Response time (milliseconds)")
@@ -195,29 +193,29 @@ class ChartCreator:
             if 'JMETER' not in abs_directory.upper():
                 hey = HeyAnalyzer()
                 hey.processallfiles(abs_directory)
-                self.savecsvPlot(hey,directory)
-                try:
-                    log = LogAnalyzer()
-                    log.work(abs_directory)
-                    print("Charting " + directory + " Knative logs")
-                    pplot.plot(log.concurrencypersec)
-                    pplot.title(directory)
-                    pplot.xlabel("Time (seconds)")
-                    pplot.ylabel("ObsevedStableConcurrency")
-                    pplot.savefig(directory + "-cc.png")
-                    pplot.clf()
-                    pplot.plot(log.podpersec)
-                    pplot.title(directory)
-                    pplot.xlabel("Time (seconds)")
-                    pplot.ylabel("Pod count")
-                    pplot.savefig(directory + "-pod.png")
-                    pplot.clf()
-                except Exception as e:
-                    print(e)
+                self.savecsvplot(hey, directory)
             else:
                 jmeter = JmeterAnalyzer()
                 jmeter.processallfiles(abs_directory)
-                self.savecsvPlot(jmeter,directory)
+                self.savecsvplot(jmeter, directory)
+            try:
+                log = LogAnalyzer()
+                log.work(abs_directory)
+                print("Charting " + directory + " Knative logs")
+                pplot.plot(log.concurrencypersec)
+                pplot.title(directory)
+                pplot.xlabel("Time (seconds)")
+                pplot.ylabel("ObsevedStableConcurrency")
+                pplot.savefig(directory + "-cc.png")
+                pplot.clf()
+                pplot.plot(log.podpersec)
+                pplot.title(directory)
+                pplot.xlabel("Time (seconds)")
+                pplot.ylabel("Pod count")
+                pplot.savefig(directory + "-pod.png")
+                pplot.clf()
+            except Exception as e:
+                print(e)
 
 
 if __name__ == "__main__":
