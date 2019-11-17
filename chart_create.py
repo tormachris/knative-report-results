@@ -334,7 +334,7 @@ class ChartCreator:
         Process all directories in repo
         :return:
         """
-        dirs = next(os.walk('.'))[1]
+        dirs = next(os.walk(os.getenv('SEARCHDIR',default='.')))[1]
         for directory in dirs:
             abs_directory = os.path.abspath(directory)
             print(abs_directory)
