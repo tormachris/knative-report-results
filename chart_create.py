@@ -334,9 +334,10 @@ class ChartCreator:
         Process all directories in repo
         :return:
         """
-        dirs = next(os.walk(os.getenv('SEARCHDIR',default='.')))[1]
+        dirs = next(os.walk(os.getenv('SEARCHDIR', default='.')))[1]
         for directory in dirs:
-            abs_directory = os.path.abspath(directory)
+            abs_directory = os.getenv(
+                'SEARCHDIR', default='.') + '/' + directory
             print(abs_directory)
             if 'JMETER' not in abs_directory.upper():
                 hey = HeyAnalyzer()
