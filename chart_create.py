@@ -319,7 +319,6 @@ class ChartCreator:
         :param directory:
         :return:
         """
-        print("Charting " + directory)
         pplot.plot(csvfile.responsespersec)
         pplot.title(directory)
         pplot.xlabel("Time (seconds)")
@@ -332,6 +331,7 @@ class ChartCreator:
         pplot.ylabel("Response time (milliseconds)")
         pplot.savefig(os.getenv('CHARTDIR', default='.') + '/' + directory + "-latency.png")
         pplot.clf()
+        print("Charted " + directory)
 
     @staticmethod
     def analyze_jmeter(abs_directory, directory):
