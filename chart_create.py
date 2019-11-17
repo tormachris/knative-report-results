@@ -366,21 +366,24 @@ class ChartCreator:
         :param directory:
         :return:
         """
-        log = LogAnalyzer()
-        log.work(abs_directory)
-        print("Charting " + directory + " Knative logs")
-        pplot.plot(log.concurrencypersec)
-        pplot.title(directory)
-        pplot.xlabel("Time (seconds)")
-        pplot.ylabel("ObsevedStableConcurrency")
-        pplot.savefig(os.getenv('CHARTDIR', default='.') + '/' + directory + "-cc.png")
-        pplot.clf()
-        pplot.plot(log.podpersec)
-        pplot.title(directory)
-        pplot.xlabel("Time (seconds)")
-        pplot.ylabel("Pod count")
-        pplot.savefig(os.getenv('CHARTDIR', default='.') + '/' + directory + "-pod.png")
-        pplot.clf()
+        try:
+            log = LogAnalyzer()
+            log.work(abs_directory)
+            print("Charting " + directory + " Knative logs")
+            pplot.plot(log.concurrencypersec)
+            pplot.title(directory)
+            pplot.xlabel("Time (seconds)")
+            pplot.ylabel("ObsevedStableConcurrency")
+            pplot.savefig(os.getenv('CHARTDIR', default='.') + '/' + directory + "-cc.png")
+            pplot.clf()
+            pplot.plot(log.podpersec)
+            pplot.title(directory)
+            pplot.xlabel("Time (seconds)")
+            pplot.ylabel("Pod count")
+            pplot.savefig(os.getenv('CHARTDIR', default='.') + '/' + directory + "-pod.png")
+            pplot.clf()
+        except Exception as exception:
+            print(exception)
 
     def doallruns(self):
         """
@@ -397,14 +400,12 @@ class ChartCreator:
                 process = multiprocessing.Process(target=ChartCreator.analyze_hey, args=(abs_directory, directory,))
             else:
                 process = multiprocessing.Process(target=ChartCreator.analyze_jmeter, args=(abs_directory, directory,))
-            try:
-                jobs.append(process)
-                process.start()
-                logprocess = multiprocessing.Process(target=ChartCreator.analyze_logs, args=(abs_directory, directory,))
-                jobs.append(logprocess)
-                logprocess.start()
-            except Exception as exception:
-                print(exception)
+
+            jobs.append(process)
+            process.start()
+            logprocess = multiprocessing.Process(target=ChartCreator.analyze_logs, args=(abs_directory, directory,))
+            jobs.append(logprocess)
+            logprocess.start()
 
 
 if __name__ == "__main__":
