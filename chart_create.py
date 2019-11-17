@@ -11,6 +11,7 @@ import json
 import datetime
 import re
 import abc
+import multiprocessing
 import matplotlib.pyplot as pplot
 
 
@@ -308,7 +309,8 @@ class ChartCreator:
     Create charts automagically
     """
 
-    def savecsvplot(self, csvfile: CsvAnalyzer, directory) -> None:
+    @staticmethod
+    def savecsvplot(csvfile: CsvAnalyzer, directory) -> None:
         """
         Save plot of csv file
         :param csvfile:
@@ -329,41 +331,73 @@ class ChartCreator:
         pplot.savefig(os.getenv('CHARTDIR', default='.') + '/' + directory + "-latency.png")
         pplot.clf()
 
+    def analyze_jmeter(self, abs_directory, directory):
+        """
+        Analyze Jmeter output
+        :param abs_directory:
+        :param directory:
+        :return:
+        """
+        jmeter = JmeterAnalyzer()
+        jmeter.processallfiles(abs_directory)
+        jmeter.collectinfo(False)
+        ChartCreator.savecsvplot(jmeter, directory)
+
+    def analyze_hey(self, abs_directory, directory):
+        """
+        Analyze hey output
+        :param abs_directory:
+        :param directory:
+        :return:
+        """
+        hey = HeyAnalyzer()
+        hey.processallfiles(abs_directory)
+        ChartCreator.savecsvplot(hey, directory)
+
+    def analyze_logs(self, abs_directory, directory):
+        """
+        Analyze knative logs
+        :param abs_directory:
+        :param directory:
+        :return:
+        """
+        log = LogAnalyzer()
+        log.work(abs_directory)
+        print("Charting " + directory + " Knative logs")
+        pplot.plot(log.concurrencypersec)
+        pplot.title(directory)
+        pplot.xlabel("Time (seconds)")
+        pplot.ylabel("ObsevedStableConcurrency")
+        pplot.savefig(os.getenv('CHARTDIR', default='.') + '/' + directory + "-cc.png")
+        pplot.clf()
+        pplot.plot(log.podpersec)
+        pplot.title(directory)
+        pplot.xlabel("Time (seconds)")
+        pplot.ylabel("Pod count")
+        pplot.savefig(os.getenv('CHARTDIR', default='.') + '/' + directory + "-pod.png")
+        pplot.clf()
+
     def doallruns(self):
         """
         Process all directories in repo
         :return:
         """
         dirs = next(os.walk(os.getenv('SEARCHDIR', default='.')))[1]
+        jobs = []
         for directory in dirs:
             abs_directory = os.getenv(
                 'SEARCHDIR', default='.') + '/' + directory
             print(abs_directory)
             if 'JMETER' not in abs_directory.upper():
-                hey = HeyAnalyzer()
-                hey.processallfiles(abs_directory)
-                self.savecsvplot(hey, directory)
+                process = multiprocessing.Process(target=self.analyze_hey, args=(abs_directory, directory,))
             else:
-                jmeter = JmeterAnalyzer()
-                jmeter.processallfiles(abs_directory)
-                jmeter.collectinfo(False)
-                self.savecsvplot(jmeter, directory)
+                process = multiprocessing.Process(target=self.analyze_jmeter, args=(abs_directory, directory,))
             try:
-                log = LogAnalyzer()
-                log.work(abs_directory)
-                print("Charting " + directory + " Knative logs")
-                pplot.plot(log.concurrencypersec)
-                pplot.title(directory)
-                pplot.xlabel("Time (seconds)")
-                pplot.ylabel("ObsevedStableConcurrency")
-                pplot.savefig(os.getenv('CHARTDIR', default='.') + '/' + directory + "-cc.png")
-                pplot.clf()
-                pplot.plot(log.podpersec)
-                pplot.title(directory)
-                pplot.xlabel("Time (seconds)")
-                pplot.ylabel("Pod count")
-                pplot.savefig(os.getenv('CHARTDIR', default='.') + '/' + directory + "-pod.png")
-                pplot.clf()
+                jobs.append(process)
+                process.start()
+                logprocess = multiprocessing.Process(target=self.analyze_logs, args=(abs_directory, directory,))
+                jobs.append(logprocess)
+                logprocess.start()
             except Exception as exception:
                 print(exception)
 
