@@ -4,6 +4,8 @@ WORKDIR /app
 
 VOLUME /data
 
+ENV SEARCHDIR /data
+
 COPY requirements.txt .
 
 RUN pip3 install -r requirements.txt
