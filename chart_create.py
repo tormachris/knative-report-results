@@ -333,7 +333,8 @@ class ChartCreator:
         pplot.savefig(os.getenv('CHARTDIR', default='.') + '/' + directory + "-latency.png")
         pplot.clf()
 
-    def analyze_jmeter(self, abs_directory, directory):
+    @staticmethod
+    def analyze_jmeter(abs_directory, directory):
         """
         Analyze Jmeter output
         :param abs_directory:
@@ -345,7 +346,8 @@ class ChartCreator:
         jmeter.collectinfo(False)
         ChartCreator.savecsvplot(jmeter, directory)
 
-    def analyze_hey(self, abs_directory, directory):
+    @staticmethod
+    def analyze_hey(abs_directory, directory):
         """
         Analyze hey output
         :param abs_directory:
@@ -356,7 +358,8 @@ class ChartCreator:
         hey.processallfiles(abs_directory)
         ChartCreator.savecsvplot(hey, directory)
 
-    def analyze_logs(self, abs_directory, directory):
+    @staticmethod
+    def analyze_logs(abs_directory, directory):
         """
         Analyze knative logs
         :param abs_directory:
@@ -391,13 +394,13 @@ class ChartCreator:
                 'SEARCHDIR', default='.') + '/' + directory
             print(abs_directory)
             if 'JMETER' not in abs_directory.upper():
-                process = multiprocessing.Process(target=self.analyze_hey, args=(abs_directory, directory,))
+                process = multiprocessing.Process(target=ChartCreator.analyze_hey, args=(abs_directory, directory,))
             else:
-                process = multiprocessing.Process(target=self.analyze_jmeter, args=(abs_directory, directory,))
+                process = multiprocessing.Process(target=ChartCreator.analyze_jmeter, args=(abs_directory, directory,))
             try:
                 jobs.append(process)
                 process.start()
-                logprocess = multiprocessing.Process(target=self.analyze_logs, args=(abs_directory, directory,))
+                logprocess = multiprocessing.Process(target=ChartCreator.analyze_logs, args=(abs_directory, directory,))
                 jobs.append(logprocess)
                 logprocess.start()
             except Exception as exception:
