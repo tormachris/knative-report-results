@@ -240,8 +240,6 @@ class LogAnalyzer(Analyzer):
             avgpod = average(pod)
             avgcc = average(concurrency)
             self.podpersec.append(avgpod)
-            self.podpersec.append(avgpod)
-            self.concurrencypersec.append(avgcc)
             self.concurrencypersec.append(avgcc)
             if shouldprint:
                 print(avgpod)
