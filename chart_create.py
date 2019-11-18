@@ -310,6 +310,22 @@ class ChartCreator:
     """
 
     @staticmethod
+    def savetxtplot(csvfile: CsvAnalyzer, directory) -> None:
+        """
+        Save raw data to txt
+        :param directory:
+        :param csvfile:
+        :return:
+        """
+        with open(os.getenv('TEXTDIR', default='.') + '/' + directory + "-rps.txt", 'w') as f:
+            for item in csvfile.responsespersec:
+                f.write("%s\n" % item)
+        with open(os.getenv('TEXTDIR', default='.') + '/' + directory + "-latency.txt", 'w') as f:
+            for item in csvfile.latencypersec:
+                f.write("%s\n" % item)
+
+
+    @staticmethod
     def savecsvplot(csvfile: CsvAnalyzer, directory) -> None:
         """
         Save plot of csv file
@@ -343,6 +359,7 @@ class ChartCreator:
         jmeter.processallfiles(abs_directory)
         jmeter.collectinfo(False)
         ChartCreator.savecsvplot(jmeter, directory)
+        ChartCreator.savetxtplot(jmeter,directory)
 
     @staticmethod
     def analyze_hey(abs_directory, directory):
@@ -355,6 +372,7 @@ class ChartCreator:
         hey = HeyAnalyzer()
         hey.processallfiles(abs_directory)
         ChartCreator.savecsvplot(hey, directory)
+        ChartCreator.savetxtplot(hey, directory)
 
     @staticmethod
     def analyze_logs(abs_directory, directory):
@@ -380,6 +398,12 @@ class ChartCreator:
             pplot.ylabel("Pod count")
             pplot.savefig(os.getenv('CHARTDIR', default='.') + '/' + directory + "-pod.png")
             pplot.clf()
+            with open(os.getenv('TEXTDIR', default='.') + '/' + directory + "-pods.txt", 'w') as f:
+                for item in log.podpersec:
+                    f.write("%s\n" % item)
+            with open(os.getenv('TEXTDIR', default='.') + '/' + directory + "-cc.txt", 'w') as f:
+                for item in log.concurrencypersec:
+                    f.write("%s\n" % item)
         except Exception as exception:
             print(exception)
 
