@@ -13,6 +13,10 @@ import re
 import abc
 import multiprocessing
 import matplotlib.pyplot as pplot
+import sentry_sdk
+
+
+sentry_sdk.init("https://ad1710ee2c504dfea06a065d456c9566@sentry.io/1829302")
 
 
 def average(lst: list) -> float:
