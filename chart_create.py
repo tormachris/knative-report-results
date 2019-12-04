@@ -325,11 +325,10 @@ class ChartCreator:
             for item in csvfile.responsespersec:
                 f.write("%s\n" % item)
         with open(os.getenv('TEXTDIR', default='.') + '/' + directory + "-latency.txt", 'w') as f:
-            i=1
+            i = 1
             for item in csvfile.latencypersec:
                 f.write("%i\t%s\n" % (i, item))
                 i = i + 1
-
 
     @staticmethod
     def savecsvplot(csvfile: CsvAnalyzer, directory) -> None:
@@ -343,13 +342,25 @@ class ChartCreator:
         pplot.title(directory)
         pplot.xlabel("Time (seconds)")
         pplot.ylabel("Response/sec")
-        pplot.savefig(os.getenv('CHARTDIR', default='.') + '/' + directory + "-rps.png")
+        pplot.savefig(
+            os.getenv(
+                'CHARTDIR',
+                default='.') +
+            '/' +
+            directory +
+            "-rps.png")
         pplot.clf()
         pplot.plot(csvfile.latencypersec)
         pplot.title(directory)
         pplot.xlabel("Time (seconds)")
         pplot.ylabel("Response time (milliseconds)")
-        pplot.savefig(os.getenv('CHARTDIR', default='.') + '/' + directory + "-latency.png")
+        pplot.savefig(
+            os.getenv(
+                'CHARTDIR',
+                default='.') +
+            '/' +
+            directory +
+            "-latency.png")
         pplot.clf()
         print("Charted " + directory)
 
@@ -365,7 +376,7 @@ class ChartCreator:
         jmeter.processallfiles(abs_directory)
         jmeter.collectinfo(False)
         ChartCreator.savecsvplot(jmeter, directory)
-        ChartCreator.savetxtplot(jmeter,directory)
+        ChartCreator.savetxtplot(jmeter, directory)
 
     @staticmethod
     def analyze_hey(abs_directory, directory):
@@ -396,13 +407,25 @@ class ChartCreator:
             pplot.title(directory)
             pplot.xlabel("Time (seconds)")
             pplot.ylabel("ObsevedStableConcurrency")
-            pplot.savefig(os.getenv('CHARTDIR', default='.') + '/' + directory + "-cc.png")
+            pplot.savefig(
+                os.getenv(
+                    'CHARTDIR',
+                    default='.') +
+                '/' +
+                directory +
+                "-cc.png")
             pplot.clf()
             pplot.plot(log.podpersec)
             pplot.title(directory)
             pplot.xlabel("Time (seconds)")
             pplot.ylabel("Pod count")
-            pplot.savefig(os.getenv('CHARTDIR', default='.') + '/' + directory + "-pod.png")
+            pplot.savefig(
+                os.getenv(
+                    'CHARTDIR',
+                    default='.') +
+                '/' +
+                directory +
+                "-pod.png")
             pplot.clf()
             with open(os.getenv('TEXTDIR', default='.') + '/' + directory + "-pods.txt", 'w') as f:
                 for item in log.podpersec:
@@ -425,13 +448,19 @@ class ChartCreator:
                 'SEARCHDIR', default='.') + '/' + directory
             print(abs_directory)
             if 'JMETER' not in abs_directory.upper():
-                process = multiprocessing.Process(target=ChartCreator.analyze_hey, args=(abs_directory, directory,))
+                process = multiprocessing.Process(
+                    target=ChartCreator.analyze_hey, args=(
+                        abs_directory, directory,))
             else:
-                process = multiprocessing.Process(target=ChartCreator.analyze_jmeter, args=(abs_directory, directory,))
+                process = multiprocessing.Process(
+                    target=ChartCreator.analyze_jmeter, args=(
+                        abs_directory, directory,))
 
             jobs.append(process)
             process.start()
-            logprocess = multiprocessing.Process(target=ChartCreator.analyze_logs, args=(abs_directory, directory,))
+            logprocess = multiprocessing.Process(
+                target=ChartCreator.analyze_logs, args=(
+                    abs_directory, directory,))
             jobs.append(logprocess)
             logprocess.start()
 
