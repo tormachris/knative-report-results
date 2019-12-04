@@ -322,13 +322,15 @@ class ChartCreator:
         :return:
         """
         with open(os.getenv('TEXTDIR', default='.') + '/' + directory + "-rps.txt", 'w') as f:
-            for item in csvfile.responsespersec:
-                f.write("%s\n" % item)
-        with open(os.getenv('TEXTDIR', default='.') + '/' + directory + "-latency.txt", 'w') as f:
             i = 1
-            for item in csvfile.latencypersec:
+            for item in csvfile.responsespersec:
                 f.write("%i\t%s\n" % (i, item))
                 i = i + 1
+        with open(os.getenv('TEXTDIR', default='.') + '/' + directory + "-latency.txt", 'w') as f:
+            j = 1
+            for item in csvfile.latencypersec:
+                f.write("%i\t%s\n" % (j, item))
+                j = j + 1
 
     @staticmethod
     def savecsvplot(csvfile: CsvAnalyzer, directory) -> None:
