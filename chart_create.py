@@ -321,8 +321,10 @@ class ChartCreator:
             for item in csvfile.responsespersec:
                 f.write("%s\n" % item)
         with open(os.getenv('TEXTDIR', default='.') + '/' + directory + "-latency.txt", 'w') as f:
+            i=1
             for item in csvfile.latencypersec:
-                f.write("%s\n" % item)
+                f.write("%i\t%s\n" % (i, item))
+                i = i + 1
 
 
     @staticmethod
