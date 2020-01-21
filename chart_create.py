@@ -360,6 +360,10 @@ class ChartCreator:
             directory +
             "-latency.png")
         pplot.clf()
+        print("latency min, max, avg")
+        print(min(csvfile.latencypersec))
+        print(max(csvfile.latencypersec))
+        print(average(csvfile.latencypersec))
         print("Charted " + directory)
 
     @staticmethod
